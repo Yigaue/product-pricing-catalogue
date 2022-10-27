@@ -3,7 +3,6 @@ package database
 import (
 	"crud-rest-api/entities"
 	"log"
-
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -19,7 +18,7 @@ func Connect(connectionString string) {
 	log.Println("Connect to Database...")
 }
 
-func migrate() {
+func Migrate() {
 	Instance.AutoMigrate(&entities.Product{})
 	log.Println("Database migration completed...")
 }

@@ -1,9 +1,24 @@
 package main
 
-import "github.com/gorilla/mux"
+import (
+	"crud-rest-api/database"
+	"crud-rest-api/controllers"
+	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
 
 func main() {
+	LoadAppConfig()
+	database.Migrate() // call the package and get the exported function
 
+	router := mux.NewRouter().StrictSlash(true) // Initialize the router
+	RegisterProductRoutes(router)
+
+	log.Println(fmt.Sprintf("Starting server on port %s", AppConfig.Port))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", AppConfig.Port), router))
 }
 
 func RegisterProductRoutes(router *mux.Router) {

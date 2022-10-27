@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-
 	"github.com/spf13/viper"
 )
 
@@ -11,7 +10,7 @@ type Config struct { // We define a struct type name Config containing the allow
 	ConnectionString string `mapstructure:"connection_string"`
 }
 
-var AppConfig *Config // var storing pointer of type Config
+var AppConfig *Config // var AppConfig: variable pointer of type Config
 
 func LoadAppConfig() {
 	log.Println("Loading Server Configuration...")
@@ -23,5 +22,5 @@ func LoadAppConfig() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = viper.Unmarshal(&AppConfig)
+	err = viper.Unmarshal(&AppConfig) // &AppConfig: Deference pointer(AppConfig) or pass value of pointer, AppConfig into function
 }
