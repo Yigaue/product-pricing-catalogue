@@ -28,5 +28,14 @@ func checkIfProductExist(productId string) bool  {
 }
 
 func GetProductById(w http.ResponseWriter, r *http.Request) {
-	productId := mux.Vars(r)["id"]
+	productId := mux.Vars(r)["id"] //Get the route var from the request in this Product Id or we can say
+	// Gets the Product Id from the Query string of the request.
+	if(checkIfProductExist(productId) == false) {
+		json.NewEncoder(w).Encode("Product not found!")
+		return
+	}
+	var product entities.Product
+	database.Instance.First(&product, productId)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(product)
 }
