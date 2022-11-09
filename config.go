@@ -1,8 +1,8 @@
 package main
 
 import (
-	"log"
 	"github.com/spf13/viper"
+	"log"
 )
 
 type Config struct { // We define a struct type name Config containing the allowed configuration
@@ -23,4 +23,8 @@ func LoadAppConfig() {
 		log.Fatal(err)
 	}
 	err = viper.Unmarshal(&AppConfig) // &AppConfig: Deference pointer(AppConfig) or pass value of pointer, AppConfig into function
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }

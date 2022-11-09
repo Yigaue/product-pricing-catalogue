@@ -1,8 +1,8 @@
 package main
 
 import (
-	"crud-rest-api/database"
 	"crud-rest-api/controllers"
+	"crud-rest-api/database"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,6 +12,9 @@ import (
 
 func main() {
 	LoadAppConfig()
+
+	// Initialize Database
+	database.Connect(AppConfig.ConnectionString)
 	database.Migrate() // call the package and get the exported function
 
 	router := mux.NewRouter().StrictSlash(true) // Initialize the router

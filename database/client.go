@@ -13,12 +13,12 @@ func Connect(connectionString string) {
 	Instance, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
-		panic("can not connect to DB")
+		panic("Connection to database failed")
 	}
-	log.Println("Connect to Database...")
+	log.Println("Connecting to Database...")
 }
 
 func Migrate() {
 	Instance.AutoMigrate(&entities.Product{})
-	log.Println("Database migration completed...")
+	log.Println("Database migration completed successfully.")
 }

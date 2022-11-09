@@ -1,0 +1,40 @@
+@host = localhost:8080
+
+// Create Product
+POST http://{{host}}/api/products HTTP/1.1
+content-type: application/json
+    
+{
+    "name": "Things fall apart",
+    "description": "Book by Chinua Achebe",
+    "price": 5000.00
+}
+
+###
+
+// Get product by Id
+GET http://{{host}}/api/products/2 HTTP/1.1
+Content-Type: application/json
+
+###
+
+// Get all products
+GET http://{{host}}/api/products HTTP/1.1
+Content-Type: application/json
+
+###
+
+//Update Product by Id
+PUT http://{{host}}/api/products/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"No longer at ease",
+    "price": "4500",
+    "description":"A sequel to things fall apart"
+}
+
+###
+
+DELETE http://{{host}}/api/products/3
+Content-Type: application/json
