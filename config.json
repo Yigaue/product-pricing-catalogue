@@ -1,4 +1,4 @@
 {
-    "connection_string": "root:root@tcp(127.0.0.1:3306)/go-crud-demo",
+    "connection_string": "root:root@tcp(127.0.0.1:3306)/product-pricing-catalogue",
     "port": 8080
 }
